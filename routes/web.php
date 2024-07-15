@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -55,3 +56,12 @@ Route::get('/detail-book/{id}', function($id){
    ->first();
     return view('detailBook', compact('book'));
 });
+Route::get('dashboard', function(){
+    return view('admin.home');
+});
+Route::get('/book', [BookController::class, 'index'])->name('book.index');
+Route::get('/create-book', [BookController::class, 'create'])->name('book.create');
+Route::post('/create-book', [BookController::class, 'store'])->name('book.store');
+Route::get('/edit-book/{id}', [BookController::class, 'edit'])->name('book.edit');
+Route::put('/update-book/{id}', [BookController::class, 'update'])->name('book.update');
+Route::delete('delete-book/{id}', [BookController::class, 'destroy'])->name('book.destroy');
