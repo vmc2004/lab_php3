@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('thumbnail');
             $table->string('author');
             $table->string('publisher');
-            $table->datetime('Publication');
+            $table->date('Publication');
             $table->double('Price');
             $table->integer('Quantity');
             $table->unsignedInteger('Category_id');

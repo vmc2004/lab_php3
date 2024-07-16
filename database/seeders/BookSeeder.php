@@ -20,13 +20,13 @@ class BookSeeder extends Seeder
            
         for ($i = 0; $i < 100; $i++) {
             DB::table('books')->insert([
-                'title' => $faker->text(200),
+                'title' => $faker->text(25),
                 'thumbnail' => $faker->imageUrl(200, 300, 'books', true, 'Faker'),
-                'author' => $faker->text(50),
-                'publisher' => $faker->text(100),
+                'author' => $faker->text(20),
+                'publisher' => $faker->text(20),
                 'publication' => $faker->dateTime('now'),
-                'price' => $faker->numberBetween(1, 100), 
-                'quantity' => $faker->numberBetween(1, 100),
+                'price' =>rand(10, 100), 
+                'quantity' => rand(10, 100),
                 'category_id' => Rand(1, 5) 
             ]);
         }
