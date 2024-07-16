@@ -10,7 +10,7 @@
         <th scope="col">Tiêu đề </th>
         <th scope="col">Ảnh bìa</th>
         <th scope="col">Tác giả</th>
-        <th scope="col">Ngày xuất bản</th>
+        <th scope="col">Nhà xuất bản</th>
         <th scope="col">Giá bán</th>
         <th scope="col">Danh mục</th>
         <th scope="col"><a href="/create-book" class="text-white btn btn-success  ">Thêm sách</a>

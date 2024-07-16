@@ -45,4 +45,20 @@ class BookController extends Controller
        $categories = DB::table('categories')->get();
        return view('admin.Books.Edit', compact('book', 'categories'));
     }
+    public function update(Request $request){
+        $data = [
+            'title'=> $request['title'],
+            'thumbnail'=> $request['thumbnail'],
+            'author'=> $request['author'],
+            'publisher'=> $request['publisher'],
+            'publication'=> $request['publication'],
+            'price'=> $request['price'],
+            'quantity'=> $request['quantity'],
+            'category_id'=> $request['category_id']
+        ];
+        DB::table('books')
+        ->where('id', $request['id'])
+        ->update($data);
+        return redirect()->route('book.index');
+    }
 }
