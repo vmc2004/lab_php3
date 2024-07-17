@@ -137,7 +137,7 @@
                         </div>
                         <div class="navbar-nav ml-auto py-0">
                             
-                            <a href="" class="nav-item nav-link"><i class="fa-solid fa-user fa-2xl"></i></a>
+                            <a href="/sigin" class="nav-item nav-link"><i class="fa-solid fa-user fa-2xl"></i></a>
                             
                         </div>
                     </div>

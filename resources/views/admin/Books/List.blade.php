@@ -6,21 +6,21 @@
 <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">STT</th>
         <th scope="col">Tiêu đề </th>
         <th scope="col">Ảnh bìa</th>
         <th scope="col">Tác giả</th>
         <th scope="col">Nhà xuất bản</th>
         <th scope="col">Giá bán</th>
         <th scope="col">Danh mục</th>
-        <th scope="col"><a href="/create-book" class="text-white btn btn-success  ">Thêm sách</a>
+        <th scope="col"><a href="{{route('book.create')}}" class="text-white btn btn-success  ">Thêm sách</a>
         </th>
       </tr>
     </thead>
     <tbody>
      @foreach ($books as $book )
      <tr>
-        <th scope="row">{{$book->id}}</th>
+        <th scope="row">{{ $loop->iteration }}</th>
         <td>{{$book->title}}</td>
         <td><img src="{{$book->thumbnail}}" alt="" width="50px"></td>
         <td>{{$book->author}}</td>

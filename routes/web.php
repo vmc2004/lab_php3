@@ -59,9 +59,16 @@ Route::get('/detail-book/{id}', function($id){
 Route::get('dashboard', function(){
     return view('admin.home');
 });
-Route::get('/book', [BookController::class, 'index'])->name('book.index');
-Route::get('/create-book', [BookController::class, 'create'])->name('book.create');
-Route::post('/create-book', [BookController::class, 'store'])->name('book.store');
-Route::get('/edit-book/{id}', [BookController::class, 'edit'])->name('book.edit');
-Route::put('/update-book/{id}', [BookController::class, 'update'])->name('book.update');
-Route::delete('delete-book/{id}', [BookController::class, 'destroy'])->name('book.destroy');
+// Route::get('/book', [BookController::class, 'index'])->name('book.index');
+// Route::get('/create-book', [BookController::class, 'create'])->name('book.create');
+// Route::post('/create-book', [BookController::class, 'store'])->name('book.store');
+// Route::get('/edit-book/{id}', [BookController::class, 'edit'])->name('book.edit');
+// Route::put('/update-book/{id}', [BookController::class, 'update'])->name('book.update');
+// Route::delete('/delete-book/{id}', [BookController::class, 'destroy'])->name('book.destroy');
+Route::get('/sigin', function(){
+        return view('user.sigin');
+});
+Route::get('/sigup', function(){
+    return view('user.sigup');
+});
+Route::resource('book', BookController::class);

@@ -11,11 +11,7 @@ use function Ramsey\Uuid\v1;
 class BookController extends Controller
 {
     public function index(){
-        $books = DB::table('books')
-        ->join('categories', 'category_id', '=', 'categories.id')
-        ->select('books.*', 'name')
-        ->orderBy('id')
-        ->paginate(5);
+        $books = BookModel::orderByDesc('id')->paginate(5);
         return view('admin.Books.List', compact('books'));
     }
     public function create(){
