@@ -57,4 +57,17 @@ class BookController extends Controller
         ->update($data);
         return redirect()->route('book.index');
     }
+    public function show($id){
+        $book = DB::table('books')
+           ->where('id', $id)
+           ->first();
+            return view('detailBook', compact('book'));
+    }
+    public function search(Request $request)
+    {
+        $books = BookModel::query()->where('title', 'LIKE', '%'. $request->input('search').'%')
+            ->paginate(9);
+
+        return view('shop', compact('books'));
+    }
 }

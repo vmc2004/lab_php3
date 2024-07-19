@@ -1,7 +1,9 @@
-@include('header')
+@extends('index')
 
+@section('content')
+    
     <!-- Page Header Start -->
-    <div class="container-fluid bg-secondary mb-5">
+    <div class="container-fluid bg-secondary ">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Chi tiết sản phẩm</h1>
             <div class="d-inline-flex">
@@ -17,7 +19,7 @@
 </div>
 
     <!-- Shop Detail Start -->
-    <div class="container-fluid py-5">
+    <div class="container-fluid ">
         <div class="row px-xl-5">
             <div class="col-lg-5 pb-5">
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
@@ -68,7 +70,7 @@
                             <i class="fa fa-minus"></i>
                             </button>
                         </div>
-                        <input type="text" class="form-control bg-secondary text-center" value="1">
+                        <input type="text" class="form-control bg-secondary text-center"  value="1">
                         <div class="input-group-btn">
                             <button class="btn btn-primary btn-plus">
                                 <i class="fa fa-plus"></i>
@@ -298,4 +300,4 @@
     </div>
     <!-- Products End -->
 
-@include('footer')
+@endsection

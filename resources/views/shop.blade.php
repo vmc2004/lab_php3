@@ -1,11 +1,13 @@
-@include('header')
+@extends('index')
 
+@section('content')
+    
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Cửa hàng của chúng tôi</h1>
             <div class="d-inline-flex">
-                <p class="m-0"><a href="">Trang chủ</a></p>
+                <p class="m-0"><a href="/">Trang chủ</a></p>
                 <p class="m-0 px-2">-</p>
                 <p class="m-0">Cửa hàng</p>
                 
@@ -23,7 +25,7 @@
 </div>
 
     <!-- Shop Start -->
-    <div class="container-fluid pt-5">
+    <div class="container-fluid ">
         <div class="row px-xl-5">
             <!-- Shop Sidebar Start -->
             <div class="col-lg-3 col-md-12">
@@ -185,18 +187,20 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="/detail-book/{{$book->id}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="{{route('book.show', $book->id)}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
                                 <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                             </div>
                         </div>
                     </div>
                     @endforeach
-                    
+                    <div class="d-flex justify-content-center">
+                        {{$books->links()}}
+                    </div>
                         
                 </div>
             </div>
+           
             <!-- Shop Product End -->
         </div>
     </div>
-    <!-- Shop End -->
-@include('footer');
+@endsection
