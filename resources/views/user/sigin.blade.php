@@ -37,32 +37,35 @@
                         <div class="card-body">
                             <img src="{{asset('login/assets/images/logo-dark.png')}}" alt="" class="img-fluid mb-4">
                             <h4 class="mb-3 f-w-400">Đăng nhập</h4>
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="feather icon-mail"></i></span>
+                            <form action="" method="POST">
+                                @csrf
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="feather icon-mail"></i></span>
+                                    </div>
+                                    <input type="email" name="email" class="form-control" placeholder="Email ">
                                 </div>
-                                <input type="email" class="form-control" placeholder="Email ">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="feather icon-lock"></i></span>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="feather icon-lock"></i></span>
+                                    </div>
+                                    <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
                                 </div>
-                                <input type="password" class="form-control" placeholder="Mật khẩu">
-                            </div>
-                            <div class="saprator"><span>Hoặc</span></div>
-                            <button class="btn btn-facebook mb-2 mr-2"><i class="fab fa-facebook-f"></i>facebook</button>
-                            <button class="btn btn-googleplus mb-2 mr-2"><i class="fab fa-google-plus-g"></i>Google</button>
-                            <button class="btn btn-twitter mb-2 mr-2"><i class="fab fa-twitter"></i>Twitter</button>
-                            <div class="form-group text-left mt-2">
-                                <div class="checkbox checkbox-fill d-inline">
-                                    <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="">
-                                    <label for="checkbox-fill-a1" class="cr">Lưu thông tin đăng nhập</label>
+                                <div class="saprator"><span>Hoặc</span></div>
+                                <button class="btn btn-facebook mb-2 mr-2"><i class="fab fa-facebook-f"></i>facebook</button>
+                                <button class="btn btn-googleplus mb-2 mr-2"><i class="fab fa-google-plus-g"></i>Google</button>
+                                <button class="btn btn-twitter mb-2 mr-2"><i class="fab fa-twitter"></i>Twitter</button>
+                                <div class="form-group text-left mt-2">
+                                    <div class="checkbox checkbox-fill d-inline">
+                                        <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="">
+                                        <label for="checkbox-fill-a1" class="cr">Lưu thông tin đăng nhập</label>
+                                    </div>
                                 </div>
+                                <button class="btn btn-primary shadow-2 mb-4">Đăng nhập</button>
+                                <p class="mb-2 text-muted">Quên mật khẩu ? <a href="auth-reset-password.html" class="f-w-400">Reset</a></p>
+                                <p class="mb-0 text-muted">Bạn chưa có tài khoản ? <a href="{{route('user.sigup')}}" class="f-w-400">Đăng ký</a></p>
                             </div>
-                            <button class="btn btn-primary shadow-2 mb-4">Đăng nhập</button>
-                            <p class="mb-2 text-muted">Quên mật khẩu ? <a href="auth-reset-password.html" class="f-w-400">Reset</a></p>
-                            <p class="mb-0 text-muted">Bạn chưa có tài khoản ? <a href="{{route('user.sigup')}}" class="f-w-400">Đăng ký</a></p>
-                        </div>
+                            </form>
                     </div>
                     <div class="col-md-6 d-none d-md-block">
                         <img src="{{asset('login/assets/images/auth-bg.jpg')}}" alt="" class="img-fluid">

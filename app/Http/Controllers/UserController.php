@@ -4,67 +4,38 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function sigin(){
+    public function login(){
         return view('user.sigin');
     }
-
+    
+    public function sigin(Request $request){
+        // Xác thực người dùng
+        $credentials = $request->only('email', 'password');
+        
+        if (Auth::attempt($credentials)) {
+            // Đăng nhập thành công, chuyển hướng đến route 'search'
+            return redirect()->route('index');
+        }
+        
+        // Đăng nhập thất bại, chuyển hướng về lại trang đăng nhập với thông báo lỗi
+        return redirect()->route('user.sigin')
+            ->withErrors(['email' => 'Thông tin đăng nhập không đúng'])
+            ->withInput();
+    }
+    
     public function sigup(){
         return view('user.sigup');
     }
-
-    public function index()
-    {
-        //
+    public function register(Request $request){
+       $request->merge(['password' => Hash::make($request->password)]);
+       User::create($request->all());
+       return redirect()->route('user.sigin')->with('success', 'Tạo tài khoản thành công');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-       
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(User $user)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, User $user)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(User $user)
-    {
-        //
-    }
+  
+   
 }
