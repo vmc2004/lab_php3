@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Mailer\Transport\Smtp\Auth\LoginAuthenticator;
+
 Route::get('/', function () {
     $books = DB::table('books')
     ->limit(8)
@@ -26,11 +30,12 @@ Route::get('dashboard', function(){
     return view('admin.home');
 });
 
-Route::get('/sigin',[ UserController::class, 'login'])->name('user.sigin');
-Route::post('/sigin',[ UserController::class, 'sigin']);
-Route::get('/sigup',[ UserController::class, 'sigup'])->name('user.sigup');
-Route::post('/sigup',[ UserController::class, 'register']);
 
 Route::get('/cart', function(){
     return view('cart.view');
 });
+Route::get('/sigin', [LoginController::class, 'LoginController@showLoginForm'])->name('sigin');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

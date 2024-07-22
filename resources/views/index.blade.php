@@ -141,8 +141,12 @@
                         </div>
                         <div class="navbar-nav ml-auto py-0">
                             
-                            <a href="{{route('user.sigin')}}" class="nav-item nav-link"> <i class="fa-solid fa-user fa-2xl"></i></a>
+                            <a href="{{route('login')}}" class="nav-item nav-link"> <i class="fa-solid fa-user fa-2xl"></i></a>
                             
+
+
+                            <div class="submenu">
+                               
                         </div>
                     </div>
                 </nav>

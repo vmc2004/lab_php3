@@ -19,9 +19,10 @@ class UserController extends Controller
         
         if (Auth::attempt($credentials)) {
             // Đăng nhập thành công, chuyển hướng đến route 'search'
+            // dd($request->all());
             return redirect()->route('index');
         }
-        
+       
         // Đăng nhập thất bại, chuyển hướng về lại trang đăng nhập với thông báo lỗi
         return redirect()->route('user.sigin')
             ->withErrors(['email' => 'Thông tin đăng nhập không đúng'])
@@ -36,6 +37,13 @@ class UserController extends Controller
        User::create($request->all());
        return redirect()->route('user.sigin')->with('success', 'Tạo tài khoản thành công');
     }
-  
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('')->route('index');
+    }
    
 }

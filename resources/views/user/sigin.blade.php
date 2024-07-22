@@ -37,6 +37,13 @@
                         <div class="card-body">
                             <img src="{{asset('login/assets/images/logo-dark.png')}}" alt="" class="img-fluid mb-4">
                             <h4 class="mb-3 f-w-400">Đăng nhập</h4>
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                    @foreach($errors->all() as $error)
+                                        <p>{{ $error }}</p>
+                                    @endforeach
+                                </div>
+                            @endif
                             <form action="" method="POST">
                                 @csrf
                                 <div class="input-group mb-2">
@@ -63,7 +70,7 @@
                                 </div>
                                 <button class="btn btn-primary shadow-2 mb-4">Đăng nhập</button>
                                 <p class="mb-2 text-muted">Quên mật khẩu ? <a href="auth-reset-password.html" class="f-w-400">Reset</a></p>
-                                <p class="mb-0 text-muted">Bạn chưa có tài khoản ? <a href="{{route('user.sigup')}}" class="f-w-400">Đăng ký</a></p>
+                                <p class="mb-0 text-muted">Bạn chưa có tài khoản ? <a href="{{route('register')}}" class="f-w-400">Đăng ký</a></p>
                             </div>
                             </form>
                     </div>

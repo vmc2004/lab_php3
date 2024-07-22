@@ -68,7 +68,7 @@
                                     </div> --}}
                                 </div>
                                 <button type="submit" class="btn btn-primary shadow-2 mb-4">Đăng ký</button>
-                                <p class="mb-2">Bạn đã có tài khoản ? <a href="{{route('user.sigin')}}" class="f-w-400">Đăng nhập</a></p>
+                                <p class="mb-2">Bạn đã có tài khoản ? <a href="{{route('login')}}" class="f-w-400">Đăng nhập</a></p>
                             </div>
                             </form>
                     </div>
