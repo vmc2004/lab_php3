@@ -12,7 +12,7 @@
         
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Bìa sách</label>
-            <input type="text" name="thumbnail" class="form-control border" id="exampleFormControlInput1" placeholder="Ảnh bìa sách">
+            <input type="file" name="thumbnail" class="form-control border" id="exampleFormControlInput1" placeholder="Ảnh bìa sách">
           </div>
         
           <div class="mb-3">
@@ -27,22 +27,22 @@
         
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Ngày xuất bản</label>
-            <input type="date" name="publication" class="form-control border" id="exampleFormControlInput1" placeholder="Ngày xuất bản">
+            <input type="date" name="Publication" class="form-control border" id="exampleFormControlInput1" placeholder="Ngày xuất bản">
           </div>
         
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Giá bán</label>
-            <input type="number" name="price" step="0.1" class="form-control border" id="exampleFormControlInput1" placeholder="Giá bán">
+            <input type="number" name="Price" step="0.1" class="form-control border" id="exampleFormControlInput1" placeholder="Giá bán">
           </div>
         
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Số lượng</label>
-            <input type="number" name="quantity" class="form-control border" id="exampleFormControlInput1" placeholder="Số lượng">
+            <input type="number" name="Quantity" class="form-control border" id="exampleFormControlInput1" placeholder="Số lượng">
           </div>
         
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Danh mục</label>
-            <Select name="category_id" class="form-control">
+            <Select name="category_id" class="form-control border">
                 @foreach ($categories as  $cat)
                     <option value="{{$cat->id}}">{{$cat->name}}</option>
                 @endforeach

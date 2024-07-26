@@ -18,13 +18,13 @@
     <meta name="author" content="Codedthemes" />
 
     <!-- Favicon icon -->
-    <link rel="icon" href="{{asset('login/assets/images/favicon.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{asset('log/assets/images/favicon.png')}}" type="image/x-icon">
     <!-- fontawesome icon -->
-    <link rel="stylesheet" href="{{asset('login/assets/fonts/fontawesome/css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('log/assets/fonts/fontawesome/css/fontawesome-all.min.css')}}">
     <!-- animation css -->
-    <link rel="stylesheet" href="{{asset('login/assets/plugins/animation/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('log/assets/plugins/animation/css/animate.min.css')}}">
     <!-- vendor css -->
-    <link rel="stylesheet" href="{{asset('login/assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('log/assets/css/style.css')}}">
 
 </head>
 
@@ -35,7 +35,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <div class="card-body">
-                            <img src="{{asset('login/assets/images/logo-dark.png')}}" alt="" class="img-fluid mb-4">
+                            <img src="{{asset('log/assets/images/logo-dark.png')}}" alt="" class="img-fluid mb-4">
                             <h4 class="mb-3 f-w-400">Đăng nhập</h4>
                             @if($errors->any())
                                 <div class="alert alert-danger">
@@ -44,7 +44,7 @@
                                     @endforeach
                                 </div>
                             @endif
-                            <form action="" method="POST">
+                            <form action="{{route('login')}}" method="POST">
                                 @csrf
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
@@ -75,7 +75,7 @@
                             </form>
                     </div>
                     <div class="col-md-6 d-none d-md-block">
-                        <img src="{{asset('login/assets/images/auth-bg.jpg')}}" alt="" class="img-fluid">
+                        <img src="{{asset('log/assets/images/auth-bg.jpg')}}" alt="" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -83,8 +83,8 @@
     </div>
 
     <!-- Required Js -->
-    <script src="{{asset('login/assets/js/jquery-3.3.1.min.js')}}"></script>
-    <script src="{{asset('login/assets/js/popper.min.js')}}"></script>
-    <script src="{{asset('login/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('log/assets/js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('log/assets/js/popper.min.js')}}"></script>
+    <script src="{{asset('log/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
 </body>
 </html>

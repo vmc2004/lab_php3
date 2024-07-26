@@ -34,7 +34,8 @@ Route::get('dashboard', function(){
 Route::get('/cart', function(){
     return view('cart.view');
 });
-Route::get('/sigin', [LoginController::class, 'LoginController@showLoginForm'])->name('sigin');
+Route::get('/sigin', [LoginController::class, 'showLoginForm'])->name('sigin');
+Route::post('/sigin', [LoginController::class, 'Login'])->name('sigin');
 
 Auth::routes();
 

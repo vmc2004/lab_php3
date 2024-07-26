@@ -22,11 +22,11 @@
      <tr>
         <th scope="row">{{ $loop->iteration }}</th>
         <td>{{$book->title}}</td>
-        <td><img src="{{$book->thumbnail}}" alt="" width="50px"></td>
+        <td><img src="{{asset('/storage/'. $book->thumbnail)}}" alt="" width="50px"></td>
         <td>{{$book->author}}</td>
         <td>{{$book->publisher}}</td>
         <td>{{$book->Price}}</td>
-        <td>{{$book->name}}</td>
+        <td>{{$book->category->name}}</td>
         <td>
 <a href="{{route('book.edit', $book->id)}}" class="text-white btn btn-warning  ">Sửa</a>
 <form action=" {{route('book.destroy', $book->id)}}" method="post">
