@@ -28,7 +28,7 @@ Route::resource('category', CategoryController::class);
 Route::resource('book', BookController::class);
 Route::get('dashboard', function(){
     return view('admin.home');
-});
+})->name('admin');
 
 
 Route::get('/cart', function(){
@@ -36,6 +36,10 @@ Route::get('/cart', function(){
 });
 Route::get('/sigin', [LoginController::class, 'showLoginForm'])->name('sigin');
 Route::post('/sigin', [LoginController::class, 'Login'])->name('sigin');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/profile/{id}', [UserController::class, 'profile'])->name('profile');
+Route::put('/update/profile/{id}', [UserController::class,'update'])->name('update.profile');
+
 
 Auth::routes();
 

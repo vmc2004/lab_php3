@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+      
+        $books = DB::table('books')
+        ->limit(8)
+        ->orderByDesc('price')
+       ->get();
+    
+       $thap = DB::table('books')
+       ->limit(8)
+       ->orderBy('price')
+      ->get();
+      $cate = DB::table('categories')->get();
+        return view('home', compact('books', 'thap' , 'cate'));
     }
 }

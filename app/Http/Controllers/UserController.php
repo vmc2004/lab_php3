@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -44,6 +45,19 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('')->route('index');
+    }
+    public function profile(string $id){
+        $user = User::query()->findOrFail($id);
+        return view('user.profile', compact('user'));
+    }
+    public function update(Request $request, string $id){
+        $user= User::query()->findOrFail($id);
+        $data = $request->except('avatar');
+        if($request->hasFile('avatar')){
+            $data['avatar'] = Storage::put('avatar', $request->avatar);
+        }
+        $user->update($data);
+        return back()->with('message', 'Cập nhật thành công');
     }
    
 }

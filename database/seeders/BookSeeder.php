@@ -18,7 +18,7 @@ class BookSeeder extends Seeder
     {
         $faker = Faker::create();
            
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             DB::table('books')->insert([
                 'title' => $faker->text(25),
                 'thumbnail' => $faker->imageUrl(200, 300, 'books', true, 'Faker'),

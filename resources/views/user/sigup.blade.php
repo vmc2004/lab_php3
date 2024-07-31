@@ -16,6 +16,7 @@
     <meta name="description" content="Elite Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
     <meta name="keywords" content="admin templates, bootstrap admin templates, bootstrap 4, dashboard, dashboard templates, sass admin templates, html admin templates, responsive, bootstrap admin templates free download, premium bootstrap admin templates, Elite Able, Elite Able bootstrap admin template">
     <meta name="author" content="Codedthemes" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <!-- Favicon icon -->
     <link rel="icon" href="{{asset('log/assets/images/favicon.png')}}" type="image/x-icon">
@@ -53,10 +54,21 @@
                                 <!-- Thông báo lỗi cho từng trường -->
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="feather icon-log"></i></span>
+                                        <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
                                     </div>
-                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Tên đăng nhập" value="{{ old('name') }}">
-                                    @error('name')
+                                    <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" placeholder="Tên đăng nhập" value="{{ old('username') }}">
+                                    @error('username')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                                    </div>
+                                    <input type="text" name="fullname" class="form-control @error('fullname') is-invalid @enderror" placeholder="Tên người dùng" value="{{ old('fullname') }}">
+                                    @error('fullname')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
