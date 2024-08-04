@@ -43,7 +43,7 @@
                       
                         <li>
                             <i class="fa-solid fa-shield-halved"></i>
-                            <a href="{{ route('password.request') }}">Đổi mật khẩu</a>
+                            <a href="{{ route('change.password', Auth::user()->id) }}">Đổi mật khẩu</a>
                         </li>
                         <li>
                             <i class="fa-solid fa-bell"></i>

@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Expr\Cast\Bool_;
 
 use function Ramsey\Uuid\v1;
@@ -22,16 +23,12 @@ class BookController extends Controller
       return view('admin.Books.Create',compact('categories'));
     }
     public function store(Request $request){
-            $data = $request->except('thumbnail');
-            $data['thumbnail']= "";
-            if($request->hasFile('thumbnail')){
-                
-                $path_image = $request->file('thumbnail')->store('public/images');
-        
-        // Lưu đường dẫn của file vào mảng dữ liệu
-        $data['thumbnail'] = str_replace('public/', 'storage/', $path_image);
-            }
-            Book::create($data);
+        $data = $request->except('thumbnail');
+          $data['thumbnail']= "";
+          if($request->hasFile('thumbnail')){
+            $data['thumbnail'] = $request->file('thumbnail')->store('thumbnail');
+          }
+          Book::query()->create($data);
             return redirect()->route('book.index')->with('message', "Thêm dữ liệu thành công");
     }
     public function destroy($id){
@@ -43,22 +40,27 @@ class BookController extends Controller
        $categories = DB::table('categories')->get();
        return view('admin.Books.Edit', compact('book', 'categories'));
     }
-    public function update(Request $request){
-        $data = [
-            'title'=> $request['title'],
-            'thumbnail'=> $request['thumbnail'],
-            'author'=> $request['author'],
-            'publisher'=> $request['publisher'],
-            'publication'=> $request['publication'],
-            'price'=> $request['price'],
-            'quantity'=> $request['quantity'],
-            'category_id'=> $request['category_id']
-        ];
-        DB::table('books')
-        ->where('id', $request['id'])
-        ->update($data);
-        return redirect()->route('book.index');
+    public function update(Request $request, $id){
+        $book = Book::query()->findOrFail($id);
+
+        $data = $request->except('thumbnail');
+          $data['thumbnail']= "";
+          if ($request->hasFile('thumbnail')) {
+            // Xóa ảnh cũ nếu có
+            if ($book->thumbnail) {
+                Storage::disk('public')->delete($book->thumbnail);
+            }
+    
+            // Lưu ảnh mới
+            $data['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
+        } else {
+            // Giữ nguyên ảnh cũ nếu không có ảnh mới
+            $data['thumbnail'] = $book->thumbnail;
+        }
+          $book->update($data);
+            return redirect()->back()->with('message', "Thêm dữ liệu thành công");
     }
+    
     public function show($id){
         $book = DB::table('books')
            ->where('id', $id)

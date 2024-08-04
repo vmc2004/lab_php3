@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,4 +23,38 @@ class CategoryController extends Controller
         
         return view('shop' , compact('books'));
     }
+    public function index2(){
+        $categories = Category::query()->paginate(6);
+        return view('admin.Categories.List', compact('categories'));
+    }
+    public function create(){
+        return view('admin.Categories.Create');
+    }
+    public function store(Request $request){
+   $data =$request->only(['name']);
+    
+        // Lưu dữ liệu vào cơ sở dữ liệu
+        Category::create($data);
+    
+        // Chuyển hướng và hiển thị thông báo
+        return redirect()->route('admin.category.index')->with('message', 'Thêm mới thành công');
+    }
+    
+    public function destroy($id){
+        $category = Category::query()->findOrFail($id);
+        $category->delete();
+        return redirect()->route('admin.category.index')->with('message', 'Xóa thành công thành công');
+
+    }
+    public function edit($id){
+        $category = Category::query()->findOrFail($id);
+        return view('admin.Categories.Edit', compact('category'));
+    }
+    public function update(Request $request, $id){
+        $data = $request->only(['name']);
+        $category = Category::query()->findOrFail($id);
+        $category->update($data);
+        return redirect()->back()->with('message', 'Cập nhật công thành công');
+    }
+
 }

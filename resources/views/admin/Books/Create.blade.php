@@ -2,8 +2,17 @@
 
 @section('content')
 <h2>Thêm mới sách</h2>
+@if ($errors->any())
+  <div class="alert alert-danger mt-3">
+    <ul>
+      @foreach ($errors->all() as  $error)
+        <li>{{$errors}}</li>
+      @endforeach
+    </ul>
+  </div>
+@endif
 <div class="container">
-    <form action="{{route('book.store')}}" method="post">
+    <form action="{{route('book.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Tiêu đề sách</label>

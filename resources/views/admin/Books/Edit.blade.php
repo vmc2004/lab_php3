@@ -3,7 +3,7 @@
 @section('content')
 <h2>Cập nhật sách</h2>
 <div class="container">
-    <form action="{{route('book.update', $book->id)}}" method="post">
+    <form action="{{route('book.update', $book->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <input type="hidden" name="id" value="{{$book->id}}">
@@ -14,7 +14,8 @@
         
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Bìa sách</label>
-            <input type="text" name="thumbnail" class="form-control border" id="exampleFormControlInput1" placeholder="Ảnh bìa sách" value="{{$book->thumbnail}}">
+            <input type="file" name="thumbnail" class="form-control border" id="exampleFormControlInput1" placeholder="Ảnh bìa sách" value="{{$book->thumbnail}}">
+            <img src="{{asset('/storage/'. $book->thumbnail)}}" alt="" width="200px">
           </div>
         
           <div class="mb-3">
@@ -46,7 +47,7 @@
             <label for="exampleFormControlInput1" class="form-label">Danh mục</label>
             <Select name="category_id" class="form-control" >
                 @foreach ($categories as  $cat)
-                    <option value="{{$cat->id}}"  @if ($cat->id === $book->Category_id)
+                    <option value="{{$cat->id}}"  @if ($cat->id === $book->category_id)
                         selected
                     @endif >
                        

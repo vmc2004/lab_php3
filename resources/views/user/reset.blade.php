@@ -6,8 +6,8 @@
     <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 10]>
-      <script src="{{ asset('assets/libs/html5shiv/3.7.0/html5shiv.js') }}"></script>
-      <script src="{{ asset('assets/libs/respond.js/1.4.2/respond.min.js') }}"></script>
+      <script src="{{ asset('log/libs/html5shiv/3.7.0/html5shiv.js') }}"></script>
+      <script src="{{ asset('log/libs/respond.js/1.4.2/respond.min.js') }}"></script>
       <![endif]-->
     <!-- Meta -->
     <meta charset="utf-8">
@@ -18,13 +18,13 @@
     <meta name="author" content="Codedthemes" />
 
     <!-- Favicon icon -->
-    <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('log/images/favicon.png') }}" type="image/x-icon">
     <!-- animation css -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/animation/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('log/plugins/animation/css/animate.min.css') }}">
     <!-- fontawesome icon -->
-    <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome/css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('log/fonts/fontawesome/css/fontawesome-all.min.css') }}">
     <!-- vendor css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('log/css/style.css') }}">
 
 </head>
 
@@ -35,22 +35,26 @@
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <div class="card-body">
-                            <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" class="img-fluid mb-4">
+                            <img src="{{ asset('log/images/logo-dark.png') }}" alt="" class="img-fluid mb-4">
                             <h4 class="mb-4 f-w-400">Change your password</h4>
+                          <form action="" method="POST">
+                            @csrf
+                            @method('PUT')
                             <div class="input-group mb-2">
-                                <input type="password" class="form-control" placeholder="Current Password">
+                                <input type="password" name="password" class="form-control" placeholder="Current Password">
                             </div>
                             <div class="input-group mb-2">
-                                <input type="password" class="form-control" placeholder="New Password">
+                                <input type="password" name="newPassword" class="form-control" placeholder="New Password">
                             </div>
                             <div class="input-group mb-4">
-                                <input type="password" class="form-control" placeholder="Re-Type New Password">
+                                <input type="password" name="confirmPassword" class="form-control" placeholder="Re-Type New Password">
                             </div>
                             <button class="btn btn-primary mb-4">Change password</button>
                         </div>
                     </div>
+                          </form>
                     <div class="col-md-6 d-none d-md-block">
-                        <img src="{{ asset('assets/images/auth-bg.jpg') }}" alt="" class="img-fluid">
+                        <img src="{{ asset('log/images/auth-bg.jpg') }}" alt="" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -61,9 +65,9 @@
     </div>
 
     <!-- Required Js -->
-    <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('log/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('log/js/popper.min.js') }}"></script>
+    <script src="{{ asset('log/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 </body>
 
 </html>

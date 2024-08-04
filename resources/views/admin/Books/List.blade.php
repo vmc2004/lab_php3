@@ -13,7 +13,7 @@
         <th scope="col">Nhà xuất bản</th>
         <th scope="col">Giá bán</th>
         <th scope="col">Danh mục</th>
-        <th scope="col"><a href="{{route('book.create')}}" class="text-white btn btn-success  ">Thêm sách</a>
+        <th scope="col"><a href="{{route('admin.book.create')}}" class="text-white btn btn-success  ">Thêm sách</a>
         </th>
       </tr>
     </thead>
@@ -27,8 +27,8 @@
         <td>{{$book->publisher}}</td>
         <td>{{$book->Price}}</td>
         <td>{{$book->category->name}}</td>
-        <td>
-<a href="{{route('book.edit', $book->id)}}" class="text-white btn btn-warning  ">Sửa</a>
+        <td class="d-flex">
+<a href="{{route('admin.book.edit', $book->id)}}" class="text-white btn btn-warning  me-1">Sửa</a>
 <form action=" {{route('book.destroy', $book->id)}}" method="post">
 @csrf
 @method('DELETE')

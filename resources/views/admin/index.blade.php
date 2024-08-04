@@ -49,13 +49,13 @@
 </title>
 
 
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <!--     Fonts and icons     -->
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <!-- Nucleo Icons -->
 <link href="{{ asset('admin/assets/css/nucleo-icons.css')}}" rel="stylesheet" />
-<link href={{ asset('admin/assets/css/nucleo-svg.css')}}" rel="stylesheet" />
+<link href="{{ asset('admin/assets/css/nucleo-svg.css')}}" rel="stylesheet" />
 
 <!-- Font Awesome Icons -->
 <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
@@ -124,7 +124,7 @@
 
   
 <li class="nav-item">
-  <a class="nav-link text-white " href="{{route('book.index')}}">
+  <a class="nav-link text-white " href="{{route('admin.book.index')}}">
     
       <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
         <i class="material-icons opacity-10">table_view</i>
@@ -136,25 +136,25 @@
 
   
 <li class="nav-item">
-  <a class="nav-link text-white " href="./billing.html">
+  <a class="nav-link text-white " href="{{route('admin.category.index')}}">
     
       <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
         <i class="material-icons opacity-10">receipt_long</i>
       </div>
     
-    <span class="nav-link-text ms-1">Billing</span>
+    <span class="nav-link-text ms-1">Categories</span>
   </a>
 </li>
 
   
 <li class="nav-item">
-  <a class="nav-link text-white " href="./virtual-reality.html">
+  <a class="nav-link text-white " href="{{route('admin.user.index')}}">
     
       <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
         <i class="material-icons opacity-10">view_in_ar</i>
       </div>
     
-    <span class="nav-link-text ms-1">Virtual Reality</span>
+    <span class="nav-link-text ms-1">Users</span>
   </a>
 </li>
 
@@ -187,40 +187,20 @@
       <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
     </li>
   
-<li class="nav-item">
-  <a class="nav-link text-white " href="./profile.html">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-        <i class="material-icons opacity-10">person</i>
-      </div>
-    
-    <span class="nav-link-text ms-1">Profile</span>
-  </a>
-</li>
 
   
 <li class="nav-item">
-  <a class="nav-link text-white " href="./sign-in.html">
+  <a class="nav-link text-white " href="{{route('index')}}">
     
       <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
         <i class="material-icons opacity-10">login</i>
       </div>
     
-    <span class="nav-link-text ms-1">Sign In</span>
+    <span class="nav-link-text ms-1">Client</span>
   </a>
 </li>
 
   
-<li class="nav-item">
-  <a class="nav-link text-white " href="./sign-up.html">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-        <i class="material-icons opacity-10">assignment</i>
-      </div>
-    
-    <span class="nav-link-text ms-1">Sign Up</span>
-  </a>
-</li>
 
 
 
@@ -351,7 +331,9 @@
           <a href="./pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
             <i class="fa fa-user me-sm-1"></i>
             
-            <span class="d-sm-inline d-none">Sign In</span>
+           @auth
+           <span class="d-sm-inline d-none"> <img src="{{asset('/Storage/' .Auth::user()->avatar)}}" class="rounded-cirle" alt="" width="30px"> {{Auth::user()->fullname}}</span>
+           @endauth
             
           </a>
         </li>

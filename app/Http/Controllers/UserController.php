@@ -15,6 +15,12 @@ class UserController extends Controller
     }
     
     public function sigin(Request $request){
+
+        // $request->validate(
+        //     [
+        //         'name'=>
+        //     ]
+        // );
         // Xác thực người dùng
         $credentials = $request->only('email', 'password');
         
@@ -58,6 +64,43 @@ class UserController extends Controller
         }
         $user->update($data);
         return back()->with('message', 'Cập nhật thành công');
+    }
+
+    public function index(){
+        $users = User::paginate(9);
+        return view('admin.User.list', compact('users'));
+    }
+    public  function hidden(string $id){
+        $user = User::findOrFail($id);
+        $user->active = 0;
+        $user->save();
+
+        return redirect()->route('admin.user.index')->with('status', 'User activated successfully!');
+    }
+    public  function unhidden(string $id){
+        $user = User::findOrFail($id);
+        $user->active = 1;
+        $user->save();
+
+        return redirect()->route('admin.user.index')->with('status', 'User activated successfully!');
+    }
+    public function change(string $id){
+        $user = User::query()->findOrFail($id);
+        return view('user.reset',compact('user'));
+    }
+    public function updatePassword(Request $request){
+        if(Hash::check($request->password, Auth::user()->password)){
+            $user = auth()->user();
+            $user->password = Hash::make($request->newPassword);
+            $user->save();
+            Auth::logout();
+            return redirect()->route('login');
+
+        }
+    }
+    public function show($id){
+        $user = User::query()->findOrFail($id);
+        return view('admin.User.Show', compact('user'));
     }
    
 }
