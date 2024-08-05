@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -27,15 +28,7 @@ Route::get('/', function () {
 
 // Search 
 Route::get('/search', [BookController::class, 'search'])->name('search');
-// End search 
-
-
-Route::get('dashboard', function(){
-    return view('admin.home');
-})->name('admin');
-
-
-
+// End search
 Route::get('/cart', function(){
     return view('cart.view');
 });
@@ -67,6 +60,7 @@ Route::resource('book', BookController::class);
 Route::prefix('admin')
     ->as('admin.')
     ->group(function() {
+        Route::get('/', [HomeController::class,'index'])->name('index');
         
         Route::prefix('/book')
             ->as('book.')
@@ -103,6 +97,7 @@ Route::prefix('admin')
             Route::get('store', [UserController::class,'store'])->name('store');
             Route::get('{id}/edit', [UserController::class,'edit'])->name('edit');
             Route::get('{id}/update', [UserController::class,'update'])->name('update');
+            Route::delete('{id}/destroy', [UserController::class,'destroy'])->name('destroy');
         });
 
     });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -37,5 +38,9 @@ class HomeController extends Controller
       ->get();
       $cate = DB::table('categories')->get();
         return view('home', compact('books', 'thap' , 'cate'));
+    }
+    public function indexAdmin(){
+        $totalBook = count(Book::all());
+        $tot
     }
 }

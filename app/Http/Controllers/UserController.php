@@ -102,5 +102,11 @@ class UserController extends Controller
         $user = User::query()->findOrFail($id);
         return view('admin.User.Show', compact('user'));
     }
+    public function destroy($id){
+        $user = User::query()->findOrFail($id);
+
+        $user->delete();
+        return redirect()->route('admin.user.index')->with('message', 'Xóa thành công');
+    }
    
 }

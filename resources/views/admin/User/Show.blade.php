@@ -35,8 +35,21 @@
           </div>
         
           
-          <button type="submit" class="btn btn-danger">Thêm vào danh sách</button>
+        
           @csrf
     </form>
+    <button class="btn btn-success"><a href="" class="text-white">Danh sách</a></button>
+    @auth
+      @if ($user->id == Auth::user()->id)
+        
+      @else
+      <form action="{{route('admin.user.destroy' , $user->id)}}" method="post">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa người này không ?')">Xóa người dùng</button>
+      </form>
+      @endif
+    @endauth
+
 </div>
 @endsection
