@@ -151,7 +151,7 @@
                                         <!-- Liên kết cho admin -->
                                         @if (Auth::user()->role == 'admin')
                                             <li>
-                                                <a href="{{ route('admin') }}" class="dropdown-item text-center">Truy cập Admin</a>
+                                                <a href="{{ route('admin.index') }}" class="dropdown-item text-center">Truy cập Admin</a>
                                             </li>
                                         @endif
                             

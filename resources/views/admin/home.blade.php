@@ -6,21 +6,10 @@
 
 
 
-<h6>If you are not redirected automatically, follow <a href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard ">this link</a>.</h6>
-<div class="row">
-  <div class="col-lg-7 position-relative z-index-2">
-    <div class="card card-plain mb-4">
-      <div class="card-body p-3">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="d-flex flex-column h-100">
-  <h2 class="font-weight-bolder mb-0">General Statistics</h2>
-</div>
 
-          </div>
-        </div>
-      </div>
-    </div>
+  <h2 class="font-weight-bolder mb-0 text-center mb-4">Thống kê </h2>
+
+  
 
     <div class="row">
       <div class="col-lg-5 col-sm-5">
@@ -30,8 +19,8 @@
       <i class="material-icons opacity-10">weekend</i>
     </div>
     <div class="text-end pt-1">
-      <p class="text-sm mb-0 text-capitalize">Bookings</p>
-      <h4 class="mb-0">281</h4>
+      <p class="text-sm mb-0 text-capitalize">Sách</p>
+      <h4 class="mb-0">{{$totalBook}}</h4>
     </div>
   </div>
 
@@ -66,8 +55,8 @@
       <i class="material-icons opacity-10">store</i>
     </div>
     <div class="text-end pt-1">
-      <p class="text-sm mb-0 text-capitalize ">Revenue</p>
-      <h4 class="mb-0 ">34k</h4>
+      <p class="text-sm mb-0 text-capitalize ">Danh mục</p>
+      <h4 class="mb-0 ">{{$totalCategory}}</h4>
     </div>
   </div>
 
@@ -83,8 +72,8 @@
       <i class="material-icons opacity-10">person_add</i>
     </div>
     <div class="text-end pt-1">
-      <p class="text-sm mb-0 text-capitalize ">Followers</p>
-      <h4 class="mb-0 ">+91</h4>
+      <p class="text-sm mb-0 text-capitalize ">Người dùng</p>
+      <h4 class="mb-0 ">{{$totalUser}}</h4>
     </div>
   </div>
 

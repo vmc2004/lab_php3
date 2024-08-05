@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
+use function Ramsey\Uuid\v1;
 
 class HomeController extends Controller
 {
@@ -39,8 +43,10 @@ class HomeController extends Controller
       $cate = DB::table('categories')->get();
         return view('home', compact('books', 'thap' , 'cate'));
     }
-    public function indexAdmin(){
+    public function admin(){
         $totalBook = count(Book::all());
-        $tot
+        $totalUser = count(User::all());
+        $totalCategory = count(Category::all());
+        return view('admin.home', compact('totalBook','totalUser','totalCategory'));
     }
 }

@@ -60,7 +60,8 @@ Route::resource('book', BookController::class);
 Route::prefix('admin')
     ->as('admin.')
     ->group(function() {
-        Route::get('/', [HomeController::class,'index'])->name('index');
+
+        Route::get('/admin', [HomeController::class,'admin'])->name('index');
         
         Route::prefix('/book')
             ->as('book.')
