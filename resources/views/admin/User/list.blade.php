@@ -12,7 +12,11 @@
         <th scope="col">Ảnh đại diện</th>
         <th scope="col">Email</th>
         <th scope="col">Vai trò</th>
-        <th scope="col">Chỉnh sửa</th>
+        <th scope="col">
+          <button class="btn btn-success">
+            <a href="{{route('admin.user.create')}}" class="text-center text-white">Thêm người dùng</a>
+          </button>
+        </th>
        
         </th>
       </tr>

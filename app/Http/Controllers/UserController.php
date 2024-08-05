@@ -10,48 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function login(){
-        return view('user.sigin');
-    }
-    
-    public function sigin(Request $request){
-
-        // $request->validate(
-        //     [
-        //         'name'=>
-        //     ]
-        // );
-        // Xác thực người dùng
-        $credentials = $request->only('email', 'password');
-        
-        if (Auth::attempt($credentials)) {
-            // Đăng nhập thành công, chuyển hướng đến route 'search'
-            // dd($request->all());
-            return redirect()->route('index');
-        }
-       
-        // Đăng nhập thất bại, chuyển hướng về lại trang đăng nhập với thông báo lỗi
-        return redirect()->route('user.sigin')
-            ->withErrors(['email' => 'Thông tin đăng nhập không đúng'])
-            ->withInput();
-    }
-    
-    public function sigup(){
-        return view('user.sigup');
-    }
-    public function register(Request $request){
-       $request->merge(['password' => Hash::make($request->password)]);
-       User::create($request->all());
-       return redirect()->route('user.sigin')->with('success', 'Tạo tài khoản thành công');
-    }
-    public function logout(Request $request)
-    {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect('')->route('index');
-    }
+  
     public function profile(string $id){
         $user = User::query()->findOrFail($id);
         return view('user.profile', compact('user'));
@@ -108,5 +67,7 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('admin.user.index')->with('message', 'Xóa thành công');
     }
-   
+    public function create(){
+        return view('admin.User.Create');
+    }
 }
