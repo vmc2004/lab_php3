@@ -38,7 +38,7 @@
         
           @csrf
     </form>
-    <button class="btn btn-success"><a href="" class="text-white">Danh sách</a></button>
+    <button class="btn btn-success"><a href="{{route('admin.user.index')}}" class="text-white">Danh sách</a></button>
     @auth
       @if ($user->id == Auth::user()->id)
         

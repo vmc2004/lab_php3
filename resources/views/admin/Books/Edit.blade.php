@@ -10,17 +10,26 @@
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Tiêu đề sách</label>
             <input type="text" name="title" class="form-control border" id="exampleFormControlInput1" placeholder="Tiêu đề sách" value="{{$book->title}}">
+            @error('title')
+            <span class="text-danger"> {{$message}}</span>
+        @enderror
           </div>
         
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Bìa sách</label>
             <input type="file" name="thumbnail" class="form-control border" id="exampleFormControlInput1" placeholder="Ảnh bìa sách" value="{{$book->thumbnail}}">
             <img src="{{asset('/storage/'. $book->thumbnail)}}" alt="" width="200px">
+            @error('thumbnail')
+            <span class="text-danger"> {{$message}}</span>
+        @enderror
           </div>
         
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Tác giả</label>
             <input type="text" name="author"  class="form-control border" id="exampleFormControlInput1" placeholder="Tác giả" value="{{$book->author}}">
+            @error('author')
+            <span class="text-danger"> {{$message}}</span>
+        @enderror
           </div>
         
           <div class="mb-3">

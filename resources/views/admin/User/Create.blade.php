@@ -12,7 +12,7 @@
   </div>
 @endif
 <div class="container">
-    <form action="{{route('book.store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.user.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Họ Và Tên</label>
@@ -22,7 +22,10 @@
           <label for="exampleFormControlInput1" class="form-label">Email</label>
           <input type="text" name="email"  class="form-control border" id="exampleFormControlInput1" s>
         </div>
-      
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Password</label>
+          <input type="password" name="password"  class="form-control border" id="exampleFormControlInput1" >
+        </div>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Tên đăng nhập</label>
           <input type="text" name="username" class="form-control border" id="exampleFormControlInput1">

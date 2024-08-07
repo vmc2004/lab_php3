@@ -95,9 +95,9 @@ Route::prefix('admin')
             Route::put('{id}/hidden', [UserController::class,'hidden'])->name('hidden');
             Route::get('show/{id}', [UserController::class,'show'])->name('show');
             Route::get('create', [UserController::class,'create'])->name('create');
-            Route::get('store', [UserController::class,'store'])->name('store');
-            Route::get('{id}/edit', [UserController::class,'edit'])->name('edit');
-            Route::get('{id}/update', [UserController::class,'update'])->name('update');
+            Route::post('store', [UserController::class,'store'])->name('store');
+            Route::get('{id}/edit', [UserController::class,'editAdmin'])->name('edit');
+            Route::put('update/{id}', [UserController::class,'updateAdmin'])->name('update');
             Route::delete('{id}/destroy', [UserController::class,'destroy'])->name('destroy');
         });
 

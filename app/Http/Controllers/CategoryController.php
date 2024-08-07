@@ -31,6 +31,17 @@ class CategoryController extends Controller
         return view('admin.Categories.Create');
     }
     public function store(Request $request){
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255'
+            
+        ],
+        [
+          'name.required'=> 'Bạn không được để trống tên danh mục',
+          
+          
+    
+        ]
+      );
    $data =$request->only(['name']);
     
         // Lưu dữ liệu vào cơ sở dữ liệu

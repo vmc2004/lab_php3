@@ -23,6 +23,21 @@ class BookController extends Controller
       return view('admin.Books.Create',compact('categories'));
     }
     public function store(Request $request){
+      $validatedData = $request->validate([
+        'title' => 'required|string|max:255',
+        'author' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    ],
+    [
+      'title.required'=> 'Bạn không được để trống tiêu đề',
+      'title.max' => 'Không được vượt quá 255 ký tự',
+      'author.required'=> 'Không được để trống tác giả',
+      'author.max'=> 'Không được vượt quá 255 ký tự',
+      
+
+    ]
+  );
         $data = $request->except('thumbnail');
           $data['thumbnail']= "";
           if($request->hasFile('thumbnail')){
@@ -41,6 +56,21 @@ class BookController extends Controller
        return view('admin.Books.Edit', compact('book', 'categories'));
     }
     public function update(Request $request, $id){
+      $validatedData = $request->validate([
+        'title' => 'required|string|max:255',
+        'author' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    ],
+    [
+      'title.required'=> 'Bạn không được để trống tiêu đề',
+      'title.max' => 'Không được vượt quá 255 ký tự',
+      'author.required'=> 'Không được để trống tác giả',
+      'author.max'=> 'Không được vượt quá 255 ký tự',
+      
+
+    ]
+  );
         $book = Book::query()->findOrFail($id);
 
         $data = $request->except('thumbnail');

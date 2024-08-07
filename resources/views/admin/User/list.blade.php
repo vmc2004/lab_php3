@@ -3,6 +3,11 @@
 
 @section('content')
 <h2 class="text-center">Danh sách sách</h2>
+@if(session('message'))
+    <div class="alert alert-success text-white">
+        {{ session('message') }}
+    </div>
+@endif
 <table class="table table-hover">
     <thead>
       <tr>
@@ -54,7 +59,9 @@
         
   
        @endif
-       <button class="btn btn-danger "><a href="{{route('admin.user.show', $user->id)}}" class="text-decoration-none text-white">Xem</a></button>
+       <button class="btn btn-primary me-1 "><a href="{{route('admin.user.show', $user->id)}}" class="text-decoration-none text-white ">Xem</a></button>
+       <button class="btn btn-warning me-1"><a href="{{route('admin.user.edit', $user->id)}}" class="text-decoration-none text-white ">Sửa</a></button>
+      
     </td>
 </tr>
 @endforeach

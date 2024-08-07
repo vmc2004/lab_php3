@@ -36,8 +36,8 @@
       <i class="material-icons opacity-10">leaderboard</i>
     </div>
     <div class="text-end pt-1">
-      <p class="text-sm mb-0 text-capitalize">Today's Users</p>
-      <h4 class="mb-0">2,300</h4>
+      <p class="text-sm mb-0 text-capitalize">Giá trung bình</p>
+      <h4 class="mb-0">{{$tbPrice}}$</h4>
     </div>
   </div>
 

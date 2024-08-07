@@ -47,6 +47,7 @@ class HomeController extends Controller
         $totalBook = count(Book::all());
         $totalUser = count(User::all());
         $totalCategory = count(Category::all());
-        return view('admin.home', compact('totalBook','totalUser','totalCategory'));
+        $tbPrice = Book::avg('price');
+        return view('admin.home', compact('totalBook','totalUser','totalCategory','tbPrice'));
     }
 }

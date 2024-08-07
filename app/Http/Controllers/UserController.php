@@ -70,4 +70,35 @@ class UserController extends Controller
     public function create(){
         return view('admin.User.Create');
     }
+    public function store(Request $request){
+        $data = $request->except('avatar');
+        $data['avatar'] = "";
+        if($request->hasFile('avatar')){
+            $data['avatar'] = $request->file('avatar')->store('avatar');
+        }
+        User::query()->create([
+            'username' => $data['username'],
+            'fullname' => $data['fullname'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'avatar' => $data['avatar'],
+        ]);
+
+        return redirect()->route('admin.user.index')->with('message', 'Thêm người dùng mới thành công');
+    }
+    public function editAdmin($id){
+        $user = User::query()->findOrFail($id);
+        return view('admin.User.Edit', compact('user'));
+    }
+    public function updateAdmin(Request $request, string $id){
+        $user= User::query()->findOrFail($id);
+        $data = $request->except('avatar');
+        if($request->hasFile('avatar')){
+            $data['avatar'] = Storage::put('avatar', $request->avatar);
+        }
+        $user->update($data);
+        return back()->with('message', 'Cập nhật thành công');
+    }
+
+  
 }
